@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b26edc78ac5a804599cf7ad0f231c05, type: 3}
+  m_Name: story_scene_ending_true
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.StorySceneDefinitionSO
+  _definition:
+    Id: ending_true
+    Name: "A-d \u30C8\u30A5\u30EB\u30FC\u30A8\u30F3\u30C9"
+    Pages:
+    - ImagePath: 
+      FallbackImagePath: 
+      NarrationText: "\u95C7\u306E\u30AA\u30FC\u30E9\u3092\u7953\u308F\u308C\u305F\u7687\u592A\u5B50\u306F\u3001\u5225\u4EBA\u306E\u3088\u3046\u3067\u3042\u3063\u305F\u3002\n\u738B\u5973\u306B\u8A6B\u3073\u3001\u505C\u6226\u5354\u5B9A\u3092\u7D50\u3076\u3068\u3001\u3059\u3050\u3055\u307E\u5175\u3092\u5F15\u304D\u4E0A\u3052\u3066\u5E30\u3063\u3066\u3044\u3063\u305F\u3002"
+      FadeInSeconds: 1
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/scene_capital_hug
+      FallbackImagePath: 
+      NarrationText: "\u738B\u90FD\u306E\u5E83\u5834\u3002\u6226\u4E89\u306E\u50B7\u8DE1\u306F\u751F\u3005\u3057\u304F\u3001\u5FA9\u65E7\u306B\u306F\u307E\u3060\u6642\u9593\u304C\u304B\u304B\u308A\u305D\u3046\u3060\u3002\n\n\u8996\u5BDF\u3092\u7D42\u3048\u305F\u738B\u5973\u304C\u3001\u3042\u306A\u305F\u306E\u5143\u3078\u8D70\u308A\u5BC4\u3063\u3066\u304F\u308B\u3002"
+      FadeInSeconds: 0.8
+      DisplaySeconds: 0
+      FadeOutSeconds: 0
+    - ImagePath: Images/scene_capital_hug
+      FallbackImagePath: 
+      NarrationText: "\u300C\u672C\u5F53\u306B\u3001\u3042\u308A\u304C\u3068\u3046\uFF01\u300D\n\n\u601D\u3044\u3063\u304D\u308A\u62B1\u304D\u7740\u304B\u308C\u3066\u3001\u5012\u308C\u305D\u3046\u306B\u306A\u308B\u3042\u306A\u305F\u3002\n\n\u3053\u308C\u304B\u3089\u5148\u306E\u3053\u3068\u306F\u308F\u304B\u3089\u306A\u3044\u304C\u3001\u3072\u3068\u307E\u305A\u4ECA\u306E\u5E78\u305B\u3092\u304B\u307F\u3057\u3081\u308B\u306E\u3067\u3042\u3063\u305F\u3002"
+      FadeInSeconds: 0
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.8
+    - ImagePath: Images/scene_capital_hug
+      FallbackImagePath: 
+      NarrationText: "\uFF5E Thanks for playing! \uFF5E\n\n\u30D7\u30ED\u30C8\u7248\u306F\u3053\u308C\u3067\u5B8C\u5168\u30AF\u30EA\u30A2\u3067\u3059\u3002\u904A\u3093\u3067\u3044\u305F\u3060\u304D\u3001\u3042\u308A\u304C\u3068\u3046\uFF01"
+      FadeInSeconds: 1
+      DisplaySeconds: 0
+      FadeOutSeconds: 1
+    - ImagePath: Images/scene_capital_hug_with_dark
+      FallbackImagePath: 
+      NarrationText: "\u2015\u2015\u3057\u304B\u3057\u3001\u672C\u5F53\u306E\u6575\u306F\u307E\u3060\u4ED6\u306B\u3044\u308B\u306E\u304B\u3082\u3057\u308C\u306A\u3044\u3002\n\n\nTo
+        be continued..."
+      FadeInSeconds: 1.2
+      DisplaySeconds: 4
+      FadeOutSeconds: 1
+    RepeatNarration: 

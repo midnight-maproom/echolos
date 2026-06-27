@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: imperial_water_archer
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: imperial_water_archer
+    Name: "\u5E1D\u56FD\u5F13\u5175"
+    Description: "\u5F8C\u308D\u306E\u6575\u3092\u653B\u6483\u3059\u308B\u9060\u9694\u30A2\u30BF\u30C3\u30AB\u30FC\u3002\u653B\u6483\u5BFE\u8C61\u306E
+      DEF \u3092\u4F4E\u4E0B\u3055\u305B\u308B\u3002"
+    UnitElement: 0
+    PlacementHint: 2
+    AttackKind: 1
+    TargetingDirection: 1
+    CombatRoles: 01000000
+    SortOrder: 5
+    AbilityLabels:
+    - "DEF \u4F4E\u4E0B\u4ED8\u4E0E"
+    Tags: []
+    MaxHP: 80
+    BaseATK: 30
+    DEF: 2
+    BaseSPD: 12
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_water_pierce
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

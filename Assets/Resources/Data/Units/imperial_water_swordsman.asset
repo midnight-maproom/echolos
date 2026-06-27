@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: imperial_water_swordsman
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: imperial_water_swordsman
+    Name: "\u5E1D\u56FD\u5263\u58EB"
+    Description: "\u653B\u6483\u5BFE\u8C61\u306E ATK \u3092\u4F4E\u4E0B\u3055\u305B\u308B\u52B9\u679C\u3092\u6301\u3064\u8FD1\u63A5\u30A2\u30BF\u30C3\u30AB\u30FC\u3002"
+    UnitElement: 0
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 0
+    CombatRoles: 01000000
+    SortOrder: 3
+    AbilityLabels:
+    - "ATK \u4F4E\u4E0B\u4ED8\u4E0E"
+    Tags: []
+    MaxHP: 100
+    BaseATK: 32
+    DEF: 3
+    BaseSPD: 10
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_mist_blade
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

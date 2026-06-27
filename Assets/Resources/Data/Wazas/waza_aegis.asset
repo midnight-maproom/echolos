@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c18162e16a7ed643b6f1a8c2197e2bc, type: 3}
+  m_Name: waza_aegis
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.WazaDefinitionSO
+  _definition:
+    Id: waza_aegis
+    Name: "\u5E87\u8B77"
+    SPD: 11
+    Cooldown: 0
+    InitialCooldown: 0
+    HitCount: 1
+    MaxUsesPerBattle: -1
+    IsForcedWhenReady: 0
+    TargetingType: 1
+    TargetCount: 1
+    TargetSelection: 3
+    Pattern: 5
+    WazaMultiplier: 1
+    IsSureHit: 0
+    WazaPower: 0
+    RiderEffect:
+      Kind: 2
+      Magnitude: 6
+      Stacks: 1
+      MaxStacks: 3
+      RemainingTurns: 3
+      Lifetime: 0
+      IsUndispellable: 0
+      IsCleansable: 0
+      AuraSourceId: 
+      SourceAbilityName: 
+      CoverTargetSlotIndex: -1
+      CoversSameRow: 0

@@ -1,0 +1,19 @@
+{
+    "name": "Echolos.Data.Editor",
+    "rootNamespace": "Echolos.Data.Editor",
+    "references": [
+        "Echolos.Domain",
+        "Echolos.Data"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

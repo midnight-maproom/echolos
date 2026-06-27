@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: water_healer
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: water_healer
+    Name: "\u7652\u6C34\u306E\u5DEB\u5973"
+    Description: "\u5473\u65B9\u5168\u54E1\u3092\u56DE\u5FA9\u3057\u3064\u3064\u80FD\u529B\u30C7\u30D0\u30D5\u3092\u89E3\u9664\u3059\u308B\u30EC\u30A2\u56DE\u5FA9\u5F79\u3002"
+    UnitElement: 2
+    PlacementHint: 2
+    AttackKind: 2
+    TargetingDirection: 0
+    CombatRoles: 03000000
+    SortOrder: 4
+    AbilityLabels:
+    - "\u5168\u4F53\u56DE\u5FA9"
+    - "\u30C7\u30D0\u30D5\u89E3\u9664"
+    Tags: []
+    MaxHP: 95
+    BaseATK: 0
+    DEF: 3
+    BaseSPD: 10
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_purify_heal
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_purify_heal_plus_1
+    - up_def_plus_3
+    - up_hp_plus_20

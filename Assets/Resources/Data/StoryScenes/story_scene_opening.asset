@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b26edc78ac5a804599cf7ad0f231c05, type: 3}
+  m_Name: story_scene_opening
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.StorySceneDefinitionSO
+  _definition:
+    Id: opening
+    Name: "A-a \u30D7\u30ED\u30ED\u30FC\u30B0"
+    Pages:
+    - ImagePath: Images/scene_balduin_castle
+      FallbackImagePath: 
+      NarrationText: "\u7A81\u5982\u653B\u3081\u5BC4\u305B\u305F\u7687\u592A\u5B50\u7387\u3044\u308B\u5E1D\u56FD\u8ECD\u306B\u3088\u308A\u3001\u738B\u56FD\u306E\u7826\u306F\u6B21\u3005\u3068\u7A81\u7834\u3055\u308C\u3066\u3044\u3063\u305F\u3002\n\n\u738B\u57CE\u306E\u76EE\u306E\u524D\u3078\u3068\u6575\u8ECD\u304C\u8FEB\u308B\u3002"
+      FadeInSeconds: 1
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/scene_opening_summon
+      FallbackImagePath: 
+      NarrationText: "\u3053\u306E\u5371\u6A5F\u306B\u3001\u738B\u5973\u306F\u738B\u5BB6\u306B\u4F1D\u308F\u308B\u8056\u5263\u306E\u529B\u3092\u4F7F\u3044\u3001\u7570\u4E16\u754C\u306E\u82F1\u96C4\u3092\u53EC\u559A\u3059\u308B\u79D8\u8853\u3092\u8A66\u307F\u308B\u3002"
+      FadeInSeconds: 0.6
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/VSPrototype/meta_hub_background
+      FallbackImagePath: 
+      NarrationText: "\u4E00\u65B9 1000 \u5E74\u5F8C\u306E\u540C\u3058\u5834\u6240\u3002\n\n\u907A\u8DE1\u63A2\u691C\u304C\u8DA3\u5473\u306E\u3042\u306A\u305F\u306F\u30011000
+        \u5E74\u524D\u306B\u6EC5\u3073\u305F\u3068\u3044\u3046\u738B\u56FD\u306E\u907A\u8DE1\u3092\u63A2\u691C\u3057\u3066\u3044\u305F\u3002"
+      FadeInSeconds: 0.6
+      DisplaySeconds: 0
+      FadeOutSeconds: 0
+    - ImagePath: Images/VSPrototype/meta_hub_background
+      FallbackImagePath: 
+      NarrationText: "\u305D\u3093\u306A\u3068\u304D\u3001\u3075\u3068\u8033\u3092\u6F84\u307E\u3059\u3068\u3001\u3069\u3053\u304B\u304B\u3089\u58F0\u304C\u805E\u3053\u3048\u308B\u3002\n\u305D\u306E\u58F0\u306E\u3059\u308B\u307B\u3046\u3078\u8FD1\u3065\u304F\u3042\u306A\u305F\u3002\n\n\u3059\u308B\u3068\u7A81\u7136\u5149\u306B\u5305\u307E\u308C\u2015"
+      FadeInSeconds: 0
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/scene_opening_summon_success
+      FallbackImagePath: 
+      NarrationText: "\u6C17\u304C\u3064\u304F\u3068\u3001\u795E\u6BBF\u306E\u3088\u3046\u306A\u5834\u6240\u306B\u3044\u305F\u3002\n\n\u738B\u5973\u306F\u5C11\u3057\u9A5A\u3044\u305F\u69D8\u5B50\u3060\u3063\u305F\u304C\u3001\u3042\u306A\u305F\u306B\u3072\u3056\u307E\u305A\u304F\u3068\n\n\u300C\u2015\u2015\u3053\u306E\u56FD\u3092\u3001\u304A\u6551\u3044\u304F\u3060\u3055\u3044\u300D"
+      FadeInSeconds: 0.6
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/scene_opening_battle_beginning
+      FallbackImagePath: 
+      NarrationText: "\u2015\u3053\u3046\u3057\u3066\u3001\u4E8C\u4EBA\u306E\u6226\u3044\u304C\u59CB\u307E\u3063\u305F\u3002"
+      FadeInSeconds: 0.8
+      DisplaySeconds: 0
+      FadeOutSeconds: 1
+    RepeatNarration: "\u6EC5\u4EA1\u3057\u305F\u738B\u56FD\u306E\u6700\u5F8C\u306E\u5E0C\u671B\u3001\u738B\u5973\u304C\u7ACB\u3061\u4E0A\u304C\u3063\u305F\u3002"

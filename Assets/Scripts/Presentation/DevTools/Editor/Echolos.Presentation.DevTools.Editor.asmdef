@@ -1,0 +1,18 @@
+{
+    "name": "Echolos.Presentation.DevTools.Editor",
+    "rootNamespace": "Echolos.Presentation.DevTools.Editor",
+    "references": [
+        "Echolos.Domain"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

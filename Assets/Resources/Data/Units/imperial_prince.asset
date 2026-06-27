@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: imperial_prince
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: imperial_prince
+    Name: "\u7687\u592A\u5B50"
+    Description: 
+    UnitElement: 0
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 0
+    CombatRoles: 01000000
+    SortOrder: 3
+    AbilityLabels: []
+    Tags: []
+    MaxHP: 250
+    BaseATK: 55
+    DEF: 5
+    BaseSPD: 12
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_dark_blade
+    - waza_dark_wave
+    PersistentEffects: []
+    AvailableUpgradeIds: []

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b26edc78ac5a804599cf7ad0f231c05, type: 3}
+  m_Name: story_scene_a_c1_attack
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.StorySceneDefinitionSO
+  _definition:
+    Id: a_c1_attack
+    Name: "A-c1 \u7687\u592A\u5B50\u8972\u6765\uFF08\u5FC5\u6557\u7248\uFF09"
+    Pages:
+    - ImagePath: 
+      FallbackImagePath: 
+      NarrationText: "\u738B\u56FD\u8ECD\u306F\u4F55\u3068\u304B\u5E1D\u56FD\u8ECD\u306E\u653B\u6483\u3092\u3057\u306E\u304E\u7D9A\u3051\u3066\u3044\u305F\u3002"
+      FadeInSeconds: 1
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: Images/scene_dark_gate
+      FallbackImagePath: 
+      NarrationText: "\u3057\u304B\u3057\u3001\u305D\u3093\u306A\u3042\u308B\u65E5\u3002\n\n\u7A81\u7136\u3001\u738B\u90FD\u306B\u95C7\u306E\u30B2\u30FC\u30C8\u304C\u958B\u304D\u3001\u7687\u592A\u5B50\u3068\u4E3B\u529B\u90E8\u968A\u304C\u6765\u8972\u3059\u308B\u3002"
+      FadeInSeconds: 0.6
+      DisplaySeconds: 0
+      FadeOutSeconds: 0
+    - ImagePath: Images/scene_dark_gate
+      FallbackImagePath: 
+      NarrationText: "\u7687\u592A\u5B50\u306E\u5468\u56F2\u306B\u306F\u3001\u898B\u308B\u304B\u3089\u306B\u7570\u8CEA\u306A\u95C7\u306E\u30AA\u30FC\u30E9\u304C\u307E\u3068\u308F\u308A\u3064\u3044\u3066\u3044\u308B\u3002\n\n\u3042\u308C\u3092\u3069\u3046\u306B\u304B\u3057\u306A\u3051\u308C\u3070\u3001\u52DD\u3066\u308B\u76F8\u624B\u3067\u306F\u306A\u3055\u305D\u3046\u3060\u3002"
+      FadeInSeconds: 0
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.8
+    RepeatNarration: "\u95C7\u306E\u30AA\u30FC\u30E9\u306B\u4FB5\u3055\u308C\u305F\u7687\u592A\u5B50\u304C\u3001\u738B\u90FD\u306B\u8972\u6765\u3057\u305F\u3002"

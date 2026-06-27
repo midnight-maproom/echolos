@@ -1,0 +1,16 @@
+{
+    "name": "Echolos.Data",
+    "rootNamespace": "Echolos.Data",
+    "references": [
+        "Echolos.Domain"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

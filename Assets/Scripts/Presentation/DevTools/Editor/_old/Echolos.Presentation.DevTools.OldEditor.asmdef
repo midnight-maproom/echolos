@@ -1,0 +1,26 @@
+{
+    "name": "Echolos.Presentation.DevTools.OldEditor",
+    "rootNamespace": "Echolos.Presentation.DevTools.Editor",
+    "references": [
+        "Echolos.Domain",
+        "Echolos.Data",
+        "Echolos.UseCase",
+        "Echolos.Presentation",
+        "Echolos.Domain.OldBattle",
+        "Echolos.Domain.OldPrototype"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "ECHOLOS_OLD_BATTLE",
+        "ECHOLOS_OLD_PROTO"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

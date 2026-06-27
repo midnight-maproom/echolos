@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bf066c7d353de4b89581b1d08a2550, type: 3}
+  m_Name: draft_pool_vsproto_standard_pool
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.DraftPoolDefinitionSO
+  _definition:
+    Id: vsproto_standard_pool
+    Name: "VS\u30D7\u30ED\u30C8\u6A19\u6E96\u30D7\u30FC\u30EB"
+    NormalUnitIds:
+    - fire_swordsman
+    - fire_archer
+    - fire_tank
+    - fire_buffer
+    - water_swordsman
+    - water_archer
+    - water_tank
+    - water_buffer
+    - light_paladin
+    - light_priest
+    RareUnitIds:
+    - fire_mage
+    - fire_assassin
+    - water_dispel_tank
+    - water_healer
+    - light_mage
+    AllRareSpecialProbability: 0.03
+    RarePerSlotProbabilities:
+    - 0.15
+    - 0.15
+    - 0.15
+    CandidatesPerOffer: 3

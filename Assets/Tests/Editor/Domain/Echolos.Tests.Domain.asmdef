@@ -1,0 +1,25 @@
+{
+    "name": "Echolos.Tests.Domain",
+    "rootNamespace": "Echolos.Tests.Domain",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Echolos.Domain",
+        "Echolos.UseCase",
+        "Echolos.Data",
+        "Echolos.Presentation"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c18162e16a7ed643b6f1a8c2197e2bc, type: 3}
+  m_Name: waza_dark_sweep
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.WazaDefinitionSO
+  _definition:
+    Id: waza_dark_sweep
+    Name: "\u95C7\u69CD\u306E\u8599\u304E"
+    SPD: 12
+    Cooldown: 0
+    InitialCooldown: 0
+    HitCount: 1
+    MaxUsesPerBattle: -1
+    IsForcedWhenReady: 1
+    TargetingType: 2
+    TargetCount: 1
+    TargetSelection: 0
+    Pattern: 2
+    WazaMultiplier: 1
+    IsSureHit: 0
+    WazaPower: 0
+    RiderEffect:
+      Kind: 0
+      Magnitude: 15
+      Stacks: 1
+      MaxStacks: 999
+      RemainingTurns: -1
+      Lifetime: 1
+      IsUndispellable: 1
+      IsCleansable: 0
+      AuraSourceId: 
+      SourceAbilityName: "\u95C7\u306E\u30AA\u30FC\u30E9"
+      CoverTargetSlotIndex: -1
+      CoversSameRow: 0

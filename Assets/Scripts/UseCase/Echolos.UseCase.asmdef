@@ -1,0 +1,16 @@
+{
+    "name": "Echolos.UseCase",
+    "rootNamespace": "Echolos.UseCase",
+    "references": [
+        "Echolos.Domain"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

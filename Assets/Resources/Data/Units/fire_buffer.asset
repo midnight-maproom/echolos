@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: fire_buffer
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: fire_buffer
+    Name: "\u708E\u306E\u9F13\u821E\u5E2B"
+    Description: "\u5473\u65B9\u306B ATK \u30D0\u30D5\u3092\u4ED8\u4E0E\u3059\u308B\u88DC\u52A9\u30E6\u30CB\u30C3\u30C8\u3002"
+    UnitElement: 1
+    PlacementHint: 2
+    AttackKind: 2
+    TargetingDirection: 0
+    CombatRoles: 02000000
+    SortOrder: 4
+    AbilityLabels:
+    - "ATK+ \u30D0\u30D5"
+    Tags: []
+    MaxHP: 90
+    BaseATK: 0
+    DEF: 3
+    BaseSPD: 15
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_battle_cry
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_battle_cry_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

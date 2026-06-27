@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b26edc78ac5a804599cf7ad0f231c05, type: 3}
+  m_Name: story_scene_b_b1_letter
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.StorySceneDefinitionSO
+  _definition:
+    Id: b_b1_letter
+    Name: "B-b1 \u65E5\u306B\u65E5\u306B\u60AA\u5316\u3059\u308B\u6226\u6CC1"
+    Pages:
+    - ImagePath: Images/scene_balduin_castle
+      FallbackImagePath: 
+      NarrationText: "\u5317\u897F\u306E\u7826\u3002\n\n\u5468\u8FBA\u5730\u57DF\u306F\u5E1D\u56FD\u8ECD\u306B\u3088\u3063\u3066\u5360\u62E0\u3055\u308C\u3001\u3082\u306F\u3084\u52DD\u3061\u76EE\u306E\u306A\u3044\u6226\u3044\u3067\u3042\u3063\u305F\u304C\u3001\u30D0\u30EB\u30C9\u30A5\u30A4\u30F3\u306F\u738B\u56FD\u8ECD\u304C\u52A9\u3051\u306B\u6765\u308B\u306F\u305A\u3068\u3001\u5473\u65B9\u3092\u9F13\u821E\u3059\u308B\u3002"
+      FadeInSeconds: 1
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.6
+    - ImagePath: 
+      FallbackImagePath: 
+      NarrationText: "\u305D\u306E\u3053\u308D\u3001\u738B\u5BAE\u306E\u4E00\u5BA4\u3002\u30D0\u30EB\u30C9\u30A5\u30A4\u30F3\u304C\u9001\u3063\u305F\u6551\u63F4\u8981\u8ACB\u306E\u624B\u7D19\u3092\u624B\u6E21\u3055\u308C\u305F\u5BB0\u76F8\u3002\n\n\u5404\u5730\u306E\u6226\u6CC1\u306F\u82B3\u3057\u304F\u306A\u304F\u3001\u305D\u306E\u3088\u3046\u306A\u8FBA\u5883\u306E\u5730\u306B\u63F4\u8ECD\u3092\u9001\u308B\u306E\u306F\u4E0D\u5408\u7406\u3067\u3042\u3063\u305F\u3002"
+      FadeInSeconds: 0.8
+      DisplaySeconds: 0
+      FadeOutSeconds: 0
+    - ImagePath: 
+      FallbackImagePath: 
+      NarrationText: "\u624B\u7D19\u306F\u738B\u5973\u306B\u5C4A\u304F\u3053\u3068\u306A\u304F\u3001\u6368\u3066\u3089\u308C\u3066\u3057\u307E\u3046\u3002"
+      FadeInSeconds: 0
+      DisplaySeconds: 0
+      FadeOutSeconds: 0.8
+    RepeatNarration: "\u30D0\u30EB\u30C9\u30A5\u30A4\u30F3\u304B\u3089\u306E\u6551\u63F4\u8981\u8ACB\u306F\u3001\u738B\u5BAE\u3067\u63E1\u308A\u3064\u3076\u3055\u308C\u305F\u3002"

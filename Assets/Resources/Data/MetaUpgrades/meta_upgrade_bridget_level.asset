@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509a6f6e089ed3b4b9c5d6f58aba6591, type: 3}
+  m_Name: meta_upgrade_bridget_level
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.MetaUpgradeDefinitionSO
+  _definition:
+    Id: bridget_level
+    DisplayName: "\u30D6\u30EA\u30B8\u30C3\u30C8 Lv \u5F37\u5316"
+    EffectText: "\u30E9\u30F3\u958B\u59CB\u6642\u306E\u30D6\u30EA\u30B8\u30C3\u30C8\u521D\u671F
+      Lv +1\uFF08\u8CFC\u5165\u6642\u306B 3 \u629E\u304B\u3089\u5F37\u5316\u3092\u9078\u3076\u30FBR5
+      \u307E\u3067\u306B\u52A0\u5165\u3057\u3066\u3044\u306A\u3044\u3068\u7121\u610F\u5473\uFF09"
+    Costs: 1e0000003c000000
+    Cap: 2

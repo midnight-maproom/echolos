@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: light_paladin
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: light_paladin
+    Name: "\u5149\u306E\u9A0E\u58EB"
+    Description: "\u30B5\u30D6\u30BF\u30F3\u30AF\u517C\u30A2\u30BF\u30C3\u30AB\u30FC\u3002\u653B\u6483\u3082\u8010\u4E45\u3082\u3053\u306A\u3059\u4E07\u80FD\u578B\u3002"
+    UnitElement: 7
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 0
+    CombatRoles: 0000000001000000
+    SortOrder: 2
+    AbilityLabels: []
+    Tags: []
+    MaxHP: 120
+    BaseATK: 30
+    DEF: 6
+    BaseSPD: 8
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_holy_strike
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

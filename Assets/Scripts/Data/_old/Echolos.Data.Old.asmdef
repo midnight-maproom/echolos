@@ -1,0 +1,19 @@
+{
+    "name": "Echolos.Data.Old",
+    "rootNamespace": "Echolos.Data",
+    "references": [
+        "Echolos.Domain",
+        "Echolos.Domain.OldBattle"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "ECHOLOS_OLD_DATA"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

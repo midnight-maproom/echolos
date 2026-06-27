@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: imperial_fire_swordsman
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: imperial_fire_swordsman
+    Name: "\u5E1D\u56FD\u5263\u58EB"
+    Description: "\u7D20\u65E9\u304F 2 \u9023\u6483\u3092\u653E\u3064\u524D\u885B\u30A2\u30BF\u30C3\u30AB\u30FC\u3002"
+    UnitElement: 0
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 0
+    CombatRoles: 01000000
+    SortOrder: 3
+    AbilityLabels:
+    - "\u591A\u6BB5\u653B\u6483"
+    Tags: []
+    MaxHP: 100
+    BaseATK: 40
+    DEF: 3
+    BaseSPD: 10
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_double_strike
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

@@ -1,0 +1,22 @@
+{
+    "name": "Echolos.Presentation.Old",
+    "rootNamespace": "Echolos.Presentation",
+    "references": [
+        "Echolos.Domain",
+        "Echolos.Domain.OldPrototype",
+        "Echolos.Data",
+        "Echolos.UseCase",
+        "Echolos.Presentation"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "ECHOLOS_OLD_PROTO"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

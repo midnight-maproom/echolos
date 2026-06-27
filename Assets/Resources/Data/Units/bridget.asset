@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: bridget
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: bridget
+    Name: "\u30D6\u30EA\u30B8\u30C3\u30C8"
+    Description: "\u7956\u7236\u304B\u3089\u8B72\u308A\u53D7\u3051\u305F\u5927\u5263\u3092\u632F\u308B\u3046\u8D64\u9AEA\u306E\u5C11\u5973\u3002\u9023\u643A\uFF08\u738B\u5973\uFF09\uFF1A\u738B\u5973\u3068\u540C\u6642\u306B\u51FA\u6483\u3059\u308B\u3068\u4E21\u8005\u306E
+      ATK \u304C\u4E0A\u6607\u3002\u738B\u5BB6\u306E\u30DA\u30F3\u30C0\u30F3\u30C8\uFF1A\u53CD\u6483\u3092\u53D7\u3051\u306A\u3044\u3002"
+    UnitElement: 1
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 0
+    CombatRoles: 01000000
+    SortOrder: 3
+    AbilityLabels:
+    - "\u9023\u643A\uFF08\u738B\u5973\uFF09"
+    - "\u738B\u5BB6\u306E\u30DA\u30F3\u30C0\u30F3\u30C8"
+    Tags: []
+    MaxHP: 110
+    BaseATK: 50
+    DEF: 3
+    BaseSPD: 12
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_attack_basic_melee
+    PersistentEffects:
+    - Kind: 19
+      Magnitude: 0
+      Stacks: 1
+      MaxStacks: 1
+      RemainingTurns: -1
+      Lifetime: 1
+      IsUndispellable: 1
+      IsCleansable: 0
+      AuraSourceId: 
+      SourceAbilityName: "\u738B\u5BB6\u306E\u30DA\u30F3\u30C0\u30F3\u30C8"
+      CoverTargetSlotIndex: -1
+      CoversSameRow: 0
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20

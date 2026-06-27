@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: light_priest
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: light_priest
+    Name: "\u5149\u306E\u53F8\u796D"
+    Description: "\u5473\u65B9\u5358\u4F53\u3092\u56DE\u5FA9\u3059\u308B\u6A19\u6E96\u7684\u306A\u30D2\u30FC\u30E9\u30FC\u3002"
+    UnitElement: 7
+    PlacementHint: 2
+    AttackKind: 2
+    TargetingDirection: 0
+    CombatRoles: 03000000
+    SortOrder: 4
+    AbilityLabels:
+    - "\u5358\u4F53\u56DE\u5FA9"
+    Tags: []
+    MaxHP: 60
+    BaseATK: 0
+    DEF: 1
+    BaseSPD: 10
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_lesser_heal
+    PersistentEffects: []
+    AvailableUpgradeIds:
+    - up_lesser_heal_plus_1
+    - up_def_plus_3
+    - up_hp_plus_20

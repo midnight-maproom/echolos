@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e07c85820caf46a314878399b8567, type: 3}
+  m_Name: fire_assassin
+  m_EditorClassIdentifier: Echolos.Data::Echolos.Data.UnitDefinitionSO
+  _definition:
+    Id: fire_assassin
+    Name: "\u7114\u5F71\u306E\u6697\u6BBA\u8005"
+    Description: "\u5F8C\u308D\u306E\u6575\u3092\u653B\u6483\u3059\u308B\u7279\u6B8A\u306A\u8FD1\u63A5\u30A2\u30BF\u30C3\u30AB\u30FC\u3002"
+    UnitElement: 1
+    PlacementHint: 1
+    AttackKind: 0
+    TargetingDirection: 1
+    CombatRoles: 01000000
+    SortOrder: 3
+    AbilityLabels:
+    - "\u6697\u6BBA"
+    - "\u30AF\u30EA\u7387+"
+    Tags: []
+    MaxHP: 85
+    BaseATK: 38
+    DEF: 2
+    BaseSPD: 14
+    ImmunityKinds: 
+    BaseParalysisTolerance: 1
+    WazaIds:
+    - waza_shadow_strike
+    PersistentEffects:
+    - Kind: 8
+      Magnitude: 10
+      Stacks: 1
+      MaxStacks: 1
+      RemainingTurns: -1
+      Lifetime: 1
+      IsUndispellable: 1
+      IsCleansable: 0
+      AuraSourceId: 
+      SourceAbilityName: "\u5F71\u306E\u696D"
+      CoverTargetSlotIndex: -1
+      CoversSameRow: 0
+    AvailableUpgradeIds:
+    - up_atk_plus_5
+    - up_def_plus_3
+    - up_hp_plus_20
