@@ -1189,15 +1189,8 @@ namespace Echolos.Presentation.VSPrototype
             // 演出完了直後のタイミング）。
             AddBridgetToRosterIfAbsent();
 
-            // 試遊モード：B-d ブリジット加入演出が体験のピーク＝ここで完結。
-            // R7 連鎖（B-e/A-c2/皇太子戦）はカットしてタイトル戻り。
-            if (_demo.IsActive)
-            {
-                CurrentPhase = VSPrototypePhase.Title;
-                return;
-            }
-
             // 「解放したラウンドの終了直後」発火なので CurrentRound+1 で次内政フェーズへ。
+            // 試遊モードでも R7 まで通常進行で続行する（エンディング後にメタ進行非保存でタイトル戻り）。
             if (CurrentRound < VSPrototypeRoundManager.MaxRounds)
                 BeginRoundInteriorPhase(CurrentRound + 1);
             else

@@ -87,12 +87,12 @@ namespace Echolos.Presentation.VSPrototype
 
         private void DrawDemoButton(float btnW, float btnH)
         {
-            float demoBtnW = btnW * 0.7f;
-            float demoBtnH = btnH * 0.7f;
+            const float DemoBtnW = 420f;
+            const float DemoBtnH = 50f;
             float y = Screen.height * 0.62f + btnH + 30f;
-            float left = Screen.width * 0.5f - demoBtnW * 0.5f;
+            float left = Screen.width * 0.5f - DemoBtnW * 0.5f;
 
-            var rect = new Rect(left, y, demoBtnW, demoBtnH);
+            var rect = new Rect(left, y, DemoBtnW, DemoBtnH);
             FillRect(rect, ColorDemoButtonBg);
             if (GUI.Button(rect, "試遊：救出戦を体験", _startButtonStyle))
             {
