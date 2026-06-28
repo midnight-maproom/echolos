@@ -4,13 +4,15 @@
 // - 背景：title_background（BackgroundRegistry 経由・ScaleAndCrop で全画面・未配置時は黒系単色塗り）
 // - 中央上：ゲームタイトル「Echoes of the Lost Kingdom」（背景画像未配置時のみ）
 // - 中央下：「ゲームスタート」ボタン
-// - 試遊シーンでは「ゲームスタート」直下に「試遊：救出戦を体験」ボタンを 1 個だけ追加（_showDemoModeButtons=true）
+// - 直下：「救出戦から始める（R4）」ショートカットボタン
 //
 // 【挙動】
-// - ボタン押下 → Bootstrap.StartFromTitle()
+// - ゲームスタート押下 → Bootstrap.StartFromTitle()
 //   - セーブあり → Phase=Hub（メタ拠点）
 //   - セーブなし → StartNewRun（A-a プロローグ → 1 周目固定構成）
-// - 試遊ボタン押下 → Bootstrap.StartDemoMode(DemoSaveCatalog.Save2Id)
+// - 救出戦ショートカット押下 → Bootstrap.StartDemoMode(DemoSaveCatalog.Save2Id)
+//   メタ進行は触らず、既存進行を温存したまま R4 から一時的にラン開始。
+//   エンディング後は通常通り Hub に戻り、メタ進行も通常通り保存される。
 //
 // 【セットアップ】
 // VSPrototypeBootstrap と同じ GameObject に AddComponent する。Phase=Title の時だけ OnGUI で描画。
@@ -31,9 +33,6 @@ namespace Echolos.Presentation.VSPrototype
 
         // タイトル文字（フルネーム）
         private const string GameTitle = "Echoes of the Lost Kingdom";
-
-        [SerializeField, Tooltip("試遊モードボタンを表示する（試遊シーン側で ON／通常シーン側で OFF）")]
-        private bool _showDemoModeButtons;
 
         private VSPrototypeBootstrap _bootstrap;
         private GUIStyle _titleStyle;
@@ -77,24 +76,19 @@ namespace Echolos.Presentation.VSPrototype
                 _bootstrap.StartFromTitle();
             }
 
-            // 試遊ボタン（_showDemoModeButtons=true なら表示）。
-            // 試遊シーン（EcholosProto_Demo.unity）でフラグ ON ／通常シーンでは OFF。
-            if (_showDemoModeButtons)
-            {
-                DrawDemoButton(btnW, btnH);
-            }
+            DrawDemoButton(btnH);
         }
 
-        private void DrawDemoButton(float btnW, float btnH)
+        private void DrawDemoButton(float startBtnH)
         {
             const float DemoBtnW = 420f;
             const float DemoBtnH = 50f;
-            float y = Screen.height * 0.62f + btnH + 30f;
+            float y = Screen.height * 0.62f + startBtnH + 30f;
             float left = Screen.width * 0.5f - DemoBtnW * 0.5f;
 
             var rect = new Rect(left, y, DemoBtnW, DemoBtnH);
             FillRect(rect, ColorDemoButtonBg);
-            if (GUI.Button(rect, "試遊：救出戦を体験", _startButtonStyle))
+            if (GUI.Button(rect, "救出戦から始める(R4)", _startButtonStyle))
             {
                 _bootstrap.StartDemoMode(DemoSaveCatalog.Save2Id);
             }

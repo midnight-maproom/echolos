@@ -112,12 +112,6 @@ namespace Echolos.Presentation.VSPrototype
         private IStorySceneCatalog _storySceneCatalog;
         private ISaveStore _saveStore;
         private MetaProgressStore _metaProgressStore;
-        // 試遊モード（DemoMode）進行制御。通常モードでは NullDemoFlowController で no-op。
-        // 試遊シーン起動時のみ StartDemoMode 経由で DemoFlowController に差し替える。
-        private IDemoFlowController _demo = new NullDemoFlowController();
-
-        /// <summary>試遊モード進行制御への読み取りアクセス（GUI 層から目的バー等で参照）。</summary>
-        public IDemoFlowController Demo => _demo;
 
         /// <summary>領地マップの全体状態（Phase=Run 時のみ意味を持つ）。</summary>
         public VSPrototypeMapState MapState => _mapState;
@@ -452,40 +446,24 @@ namespace Echolos.Presentation.VSPrototype
         }
 
         /// <summary>
-        /// 試遊モード用：DemoSaveDefinition のスナップショットから状態を一括復元してラン開始する。
-        /// メタ進行・マップ状態・初期手駒を save 値で上書きしたうえで、save.StartRound の内政フェーズへ直進。
+        /// R4 ショートカット用：DemoSaveDefinition の一時状態（手駒・マップ状態・StartRound）から
+        /// ラン開始する。メタ進行（PlayerPrefs）は触らない＝既存進行を温存したまま指定ラウンドから一時的に開始。
         /// initialRoster が空なら StartNewRunWithDefaultRoster と同じ固定構成スタートにフォールバック。
         /// </summary>
         public void StartNewRunFromDemoSave(DemoSaveDefinition save)
         {
             if (save == null) throw new ArgumentNullException(nameof(save));
 
-            // デモは Defeat 3 分割（初回 7R 到達演出）の対象外。常に false で開始。
+            // ショートカットラン中は Defeat 3 分割（初回 7R 到達演出）の対象外。常に false で開始。
             _hadFirstReachedBossAtRunStart = false;
 
-            // メタ進行を save 内容で上書き
-            Meta.LoadFromSerializedState(
-                memories: save.Memories,
-                runCount: 0,
-                hasReachedTrueEnd: false,
-                unlockedUnits: save.UnlockedUnits,
-                appliedUpgrades: ToMutableUpgrades(save.AppliedUpgrades),
-                hasFirstReachedBoss: false,
-                hasRescuedBalduin: save.HasRescuedBalduin,
-                hasNotedPendantPower: save.HasNotedPendantPower,
-                appliedUpgradeChoices: ToMutableChoices(save.AppliedUpgradeChoices),
-                seenStorySceneIds: null);
-
-            // マップ状態構築
-            _mapState = new VSPrototypeMapState(save.HasRescuedBalduin);
+            // マップ状態構築（救出戦体験のため救出済フラグは常に false で初期化＝左列バルドゥイン拠点として描画）
+            _mapState = new VSPrototypeMapState(hasRescuedBalduin: false);
             foreach (var entry in save.NodeStates)
             {
                 var node = _mapState.GetNode(entry.Col, entry.Layer);
                 if (entry.IsCaptured) node.Capture();
-                if (entry.IsFallen) node.MarkFallen();
             }
-            if (save.IsBridgetRescued) _mapState.MarkBridgetRescued();
-            if (save.IsBalduinRescuePlayed) _mapState.MarkBalduinRescuePlayed();
 
             // 初期手駒構築
             _roster = new List<Unit>();
@@ -530,25 +508,6 @@ namespace Echolos.Presentation.VSPrototype
             CurrentInteriorSubMode = VSPrototypeInteriorSubMode.None;
 
             BeginRoundInteriorPhase(save.StartRound);
-        }
-
-        // DemoSaveDefinition の読み取り専用辞書を MetaProgressState.LoadFromSerializedState 用の可変辞書に変換
-        private static Dictionary<string, int> ToMutableUpgrades(
-            System.Collections.Generic.IReadOnlyDictionary<string, int> src)
-        {
-            var dst = new Dictionary<string, int>();
-            if (src == null) return dst;
-            foreach (var kv in src) dst[kv.Key] = kv.Value;
-            return dst;
-        }
-
-        private static Dictionary<string, List<string>> ToMutableChoices(
-            System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<string>> src)
-        {
-            var dst = new Dictionary<string, List<string>>();
-            if (src == null) return dst;
-            foreach (var kv in src) dst[kv.Key] = new List<string>(kv.Value);
-            return dst;
         }
 
         // DemoSave.InitialRoster の Level 指定を Unit.AvailableUpgrades → AppliedUpgrades に反映する
@@ -718,16 +677,14 @@ namespace Echolos.Presentation.VSPrototype
         }
 
         /// <summary>
-        /// 指定セーブで試遊モードを開始する。タイトル画面の試遊ボタン（VSPrototypeTitleGUI）から呼ばれる。
-        /// _demo を NullDemoFlowController から DemoFlowController に差し替え、セーブをロードしてラン開始。
-        /// 試遊モード中はメタ進行を保存せず、救出ピーク（B-d）・ラン終了でタイトル戻りに分岐する。
+        /// 指定セーブで R4 ショートカットランを開始する。タイトル画面の「救出戦から始める（R4）」
+        /// ボタン（VSPrototypeTitleGUI）から呼ばれる。メタ進行は触らない＝既存進行を温存。
+        /// エンディング後は通常通り Hub に戻り、メタ進行も通常通り保存される。
         /// </summary>
         public void StartDemoMode(string saveId)
         {
-            var demoController = new DemoFlowController();
-            demoController.LoadSave(saveId);
-            _demo = demoController;
-            StartNewRunFromDemoSave(_demo.CurrentSave);
+            var save = DemoSaveCatalog.Get(saveId);
+            StartNewRunFromDemoSave(save);
         }
 
         /// <summary>
@@ -1215,14 +1172,7 @@ namespace Echolos.Presentation.VSPrototype
 
         private void FinishRunAfterEndingEvent()
         {
-            if (_demo.IsActive)
-            {
-                // 試遊モード：メタ進行は保存しない＝ MetaProgressStore.Save なし。
-                // タイトルに戻る（Phase 5 で「もう一度試遊しますか？」モーダルに置き換える）。
-                CurrentPhase = VSPrototypePhase.Title;
-                return;
-            }
-            FinishCurrentRun(); // 通常版：内部で Phase=Hub に切り替わる
+            FinishCurrentRun(); // 内部で Phase=Hub に切り替わる
         }
     }
 }

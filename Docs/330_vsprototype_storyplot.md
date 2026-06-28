@@ -227,7 +227,7 @@ A-b2 と同じトーンを基調に、皇太子の力に驚き絶望する主人
 >
 > 何も言わず、唇をかみしめ、踵を返す少女。彼女が王国に戻ることはなかった。
 
-- **発火条件**：R6 開始時 ＆ `!IsBridgetRescued` ＆ `!Meta.HasRescuedBalduin` ＆ **`IsBalduinSurrendered`**（R5 B-b2 既発火後＝救援打ち切り済）。試遊版 R4 開始セーブ等 R5 を経由しないシナリオでは発火しない
+- **発火条件**：R6 開始時 ＆ `!IsBridgetRescued` ＆ `!Meta.HasRescuedBalduin` ＆ **`IsBalduinSurrendered`**（R5 B-b2 既発火後＝救援打ち切り済）。R4 ショートカットセーブ等 R5 を経由しないシナリオでは発火しない
 - **スチル**：謎の少女（演説を見つめる）
 
 ### 3.5 B-d 救援成功（バルドゥイン拠点解放直後）

@@ -298,7 +298,7 @@ VSプロト仕様（[310](310_vsprototype_spec.md) ラン進行 / [320](320_vspr
 | ラン勝敗判定（[310 §1.7](310_vsprototype_spec.md) / [330 §6](330_vsprototype_storyplot.md)） | Defeat / True の 2 種類判定・3 分割 Defeat 演出振り分け | `UseCase.VSPrototype.VSPrototypeEndingResolver` + `VSPrototypeDefeatSceneResolver` + `VSPrototypeRunResult` |
 | 内政フェーズ（[310 §1.11](310_vsprototype_spec.md)） | ドラフト・自動加入・兵種強化・前後列配置の 4 アクション | `UseCase.VSPrototype.VSPrototypeInteriorService` + `VSPrototypeInteriorState` + `VSPrototypeInteriorAction` + `VSPrototypeDraftService` |
 | メタ通貨「王国の記憶」（[310 §3](310_vsprototype_spec.md)） | 獲得式（撃破数）・消費先（メタ強化購入）・ラン跨ぎ永続化 | `UseCase.VSPrototype.MetaProgressState` + `MetaProgressStore` + `MetaProgressSerializer` ＋ `ISaveStore` |
-| 試遊モード（[310 §1.13](310_vsprototype_spec.md)） | R4 救出戦 1 セーブ構成・通常進行・メタ進行非保存・救出ピーク／ラン終了でタイトル戻り | `UseCase.Demo.DemoSaveCatalog` ＋ `IDemoFlowController` 抽象 |
+| R4 救出戦ショートカット（[310 §1.13](310_vsprototype_spec.md)） | タイトル画面ボタンから R4 開始の一時ラン状態（手駒・マップ・CurrentRound）を構築／メタ進行は触らず既存進行を温存／エンディング後は通常通り Hub 遷移 | `UseCase.Demo.DemoSaveCatalog` + `DemoSaveDefinition` |
 
 ### 3.3 ストーリー演出を実現するために
 
@@ -320,7 +320,7 @@ VSプロト仕様（[310](310_vsprototype_spec.md) ラン進行 / [320](320_vspr
 | 仕様要素 | 必要な実装観点 | 該当抽象 / 層 |
 |---|---|---|
 | メタ進行（永続フラグ・解放ユニット・メタ通貨残量）の単一スロット永続化 | KVS インタフェースに JSON シリアライズ済み文字列を Load/Save／ラン終了時に Save | `Domain.Save.ISaveStore` + `Data.Save.PlayerPrefsSaveStore` + `UseCase.VSPrototype.MetaProgressStore` + `MetaProgressSerializer` |
-| 試遊モードの固定セーブ（[310 §1.13](310_vsprototype_spec.md)） | 試遊版シーンから R4 開始セーブを直接ロード（ラン進行途中状態を再現） | `UseCase.Demo.DemoSaveCatalog` ＋ `DemoSaveDefinition` |
+| R4 ショートカット用固定セーブ（[310 §1.13](310_vsprototype_spec.md)） | タイトル画面ショートカットボタンから R4 開始の一時ラン状態を構築（メタ進行は触らない） | `UseCase.Demo.DemoSaveCatalog` + `DemoSaveDefinition` |
 
 複数スロット・オートセーブ・手動セーブ・マイグレーション・破損検出・Steam Cloud 連携・クリア後セーブ管理は VSプロト範囲外（フル版設計時に追加）。
 
@@ -646,7 +646,7 @@ UseCase は機能領域でサブ namespace に分割する。
 | サブ namespace | 内容 |
 |---|---|
 | `Echolos.UseCase.VSPrototype` | VSプロト範囲のラン進行・領地マップ・敵編成・内政・メタ通貨・エンディング判定（[§3.2 マッピング表](#32-ラン進行領地マップ内政メタ通貨を実現するために) 参照） |
-| `Echolos.UseCase.Demo` | 試遊モードのセーブ／シナリオカタログ（[310 §1.13](310_vsprototype_spec.md)） |
+| `Echolos.UseCase.Demo` | R4 ショートカット用固定セーブカタログ（[310 §1.13](310_vsprototype_spec.md)） |
 
 フル版実装時は機能領域別の細分化（Campaign / Strategy / Meta / Story / Unit 等）を別途設計する。本書はプロト範囲の現状を SSoT とする。
 

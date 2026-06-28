@@ -1,7 +1,8 @@
-// 試遊モード用セーブデータの集約。
+// R4 ショートカット用セーブの集約。
 //
-// 試遊版は R4 開始・通常進行で救出戦に挑む構成に縮約。
-// メタ強化なし／手駒 12 体全員 Lv2／左列敵領のみ前ラウンドまでに制圧済。
+// タイトル画面の「救出戦から始める（R4）」ボタンが本カタログを参照し、
+// ラン中の一時状態（手駒・マップ状態・CurrentRound）だけを構築してラン開始する。
+// メタ進行は触らない＝既存セーブを破壊しない。
 using System;
 using System.Collections.Generic;
 using Echolos.Domain.Models;
@@ -12,7 +13,7 @@ namespace Echolos.UseCase.Demo
     {
         public const string Save2Id = "demo_save_2";
 
-        /// <summary>セーブ 2：救出戦体験用（R4 開始・通常進行・メタ強化なし・全員 Lv2）。</summary>
+        /// <summary>セーブ 2：救出戦体験用（R4 開始・左列敵領制圧済・手駒 12 体全員 Lv2）。</summary>
         public static DemoSaveDefinition Save2 => _save2.Value;
 
         private static readonly Lazy<DemoSaveDefinition> _save2 = new Lazy<DemoSaveDefinition>(BuildSave2);
@@ -28,23 +29,15 @@ namespace Echolos.UseCase.Demo
 
         private static DemoSaveDefinition BuildSave2()
         {
-            // セーブ 2：R4 開始時点。「あと一手で救出できる手前」状態。
+            // R4 開始時点：「あと一手で救出できる手前」状態。
             // 左列敵領は前ラウンドまでに制圧済＝ R4 で左列敵拠点に攻め込んで救出戦。
             // R4 開始時にラウンド開始演出なし（R2 B-a / R3 B-b1 / R5 B-b2 / R6 B-c のいずれも該当せず）。
             // R5 B-b2 を経由しないので 330 §3.4 の IsBalduinSurrendered ガードで B-c も発火しない。
-            // メタ強化なし・通常進行で R4 開始まで到達した想定の手駒 12 体（王女含め全員 Lv2）。
+            // 手駒 12 体は通常進行で R4 開始まで到達した想定（1 周目固定編成 6 体＋ R1〜3 で自動加入 3＋召集 3）。
             return new DemoSaveDefinition(
                 id: Save2Id,
                 displayName: "セーブ 2：救出戦体験",
                 startRound: 4,
-                memories: 0,
-                appliedUpgrades: new Dictionary<string, int>(),
-                appliedUpgradeChoices: new Dictionary<string, IReadOnlyList<string>>(),
-                unlockedUnits: Array.Empty<string>(),
-                hasRescuedBalduin: false,
-                hasNotedPendantPower: false,
-                isBridgetRescued: false,
-                isBalduinRescuePlayed: false,
                 nodeStates: new[]
                 {
                     // 左列敵領 (col=0, layer=2=LayerEnemyTerritory) を制圧済
