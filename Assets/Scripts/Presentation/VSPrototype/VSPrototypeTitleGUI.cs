@@ -2,13 +2,15 @@
 //
 // 【画面構成（PC 16:9 中央寄せ）】
 // - 背景：title_background（BackgroundRegistry 経由・ScaleAndCrop で全画面・未配置時は黒系単色塗り）
-// - 中央上：ゲームタイトル「Echoes of the Lost Kingdom」
+// - 中央上：ゲームタイトル「Echoes of the Lost Kingdom」（背景画像未配置時のみ）
 // - 中央下：「ゲームスタート」ボタン
+// - 試遊シーンでは「ゲームスタート」直下に「試遊：救出戦を体験」ボタンを 1 個だけ追加（_showDemoModeButtons=true）
 //
 // 【挙動】
 // - ボタン押下 → Bootstrap.StartFromTitle()
 //   - セーブあり → Phase=Hub（メタ拠点）
 //   - セーブなし → StartNewRun（A-a プロローグ → 1 周目固定構成）
+// - 試遊ボタン押下 → Bootstrap.StartDemoMode(DemoSaveCatalog.Save2Id)
 //
 // 【セットアップ】
 // VSPrototypeBootstrap と同じ GameObject に AddComponent する。Phase=Title の時だけ OnGUI で描画。
@@ -26,12 +28,11 @@ namespace Echolos.Presentation.VSPrototype
         private static readonly Color ColorTitle      = new Color(1.00f, 0.95f, 0.80f);
         private static readonly Color ColorButtonBg   = new Color(0.20f, 0.22f, 0.28f, 0.92f);
         private static readonly Color ColorDemoButtonBg = new Color(0.28f, 0.22f, 0.18f, 0.92f);
-        private static readonly Color ColorRecButtonBg  = new Color(0.18f, 0.28f, 0.22f, 0.92f);
 
         // タイトル文字（フルネーム）
         private const string GameTitle = "Echoes of the Lost Kingdom";
 
-        [SerializeField, Tooltip("試遊モードボタン群を表示する（試遊シーン側で ON／通常シーン側で OFF）")]
+        [SerializeField, Tooltip("試遊モードボタンを表示する（試遊シーン側で ON／通常シーン側で OFF）")]
         private bool _showDemoModeButtons;
 
         private VSPrototypeBootstrap _bootstrap;
@@ -76,64 +77,26 @@ namespace Echolos.Presentation.VSPrototype
                 _bootstrap.StartFromTitle();
             }
 
-            // 試遊モードボタン群（_showDemoModeButtons=true なら表示）。
+            // 試遊ボタン（_showDemoModeButtons=true なら表示）。
             // 試遊シーン（EcholosProto_Demo.unity）でフラグ ON ／通常シーンでは OFF。
             if (_showDemoModeButtons)
             {
-                DrawDemoModeButtons(btnW, btnH);
+                DrawDemoButton(btnW, btnH);
             }
         }
 
-        private void DrawDemoModeButtons(float btnW, float btnH)
+        private void DrawDemoButton(float btnW, float btnH)
         {
             float demoBtnW = btnW * 0.7f;
             float demoBtnH = btnH * 0.7f;
-            float gap = 8f;
-            float topY = Screen.height * 0.62f + btnH + 30f;
-            float centerX = Screen.width * 0.5f;
-            float left = centerX - demoBtnW * 0.5f;
-            float y = topY;
+            float y = Screen.height * 0.62f + btnH + 30f;
+            float left = Screen.width * 0.5f - demoBtnW * 0.5f;
 
-            // 試遊（茶色）
-            DrawScenarioButton(
-                new Rect(left, y, demoBtnW, demoBtnH),
-                "試遊：救出戦を体験",
-                DemoScenarioCatalog.Scenario2Id,
-                ColorDemoButtonBg);
-            y += demoBtnH + gap * 2;
-
-            // 録画用（緑系・動画撮影専用・020 §3）
-            DrawScenarioButton(
-                new Rect(left, y, demoBtnW, demoBtnH),
-                "録画：R5 B-b2 から",
-                DemoScenarioCatalog.RecR5BB2Id,
-                ColorRecButtonBg);
-            y += demoBtnH + gap;
-            DrawScenarioButton(
-                new Rect(left, y, demoBtnW, demoBtnH),
-                "録画：R7 A-c1 必敗から",
-                DemoScenarioCatalog.RecR7AC1Id,
-                ColorRecButtonBg);
-            y += demoBtnH + gap;
-            DrawScenarioButton(
-                new Rect(left, y, demoBtnW, demoBtnH),
-                "録画：R6 救出戦から",
-                DemoScenarioCatalog.RecR6RescueId,
-                ColorRecButtonBg);
-            y += demoBtnH + gap;
-            DrawScenarioButton(
-                new Rect(left, y, demoBtnW, demoBtnH),
-                "録画：R7 トゥルー直前から",
-                DemoScenarioCatalog.RecR7TrueId,
-                ColorRecButtonBg);
-        }
-
-        private void DrawScenarioButton(Rect rect, string label, string scenarioId, Color bg)
-        {
-            FillRect(rect, bg);
-            if (GUI.Button(rect, label, _startButtonStyle))
+            var rect = new Rect(left, y, demoBtnW, demoBtnH);
+            FillRect(rect, ColorDemoButtonBg);
+            if (GUI.Button(rect, "試遊：救出戦を体験", _startButtonStyle))
             {
-                _bootstrap.StartDemoMode(scenarioId);
+                _bootstrap.StartDemoMode(DemoSaveCatalog.Save2Id);
             }
         }
 

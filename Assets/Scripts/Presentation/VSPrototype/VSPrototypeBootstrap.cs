@@ -113,7 +113,7 @@ namespace Echolos.Presentation.VSPrototype
         private ISaveStore _saveStore;
         private MetaProgressStore _metaProgressStore;
         // 試遊モード（DemoMode）進行制御。通常モードでは NullDemoFlowController で no-op。
-        // Phase 1 以降で試遊シーン起動時のみ DemoFlowController に差し替える。
+        // 試遊シーン起動時のみ StartDemoMode 経由で DemoFlowController に差し替える。
         private IDemoFlowController _demo = new NullDemoFlowController();
 
         /// <summary>試遊モード進行制御への読み取りアクセス（GUI 層から目的バー等で参照）。</summary>
@@ -712,87 +712,20 @@ namespace Echolos.Presentation.VSPrototype
                 return;
             }
 
-            // 試遊モード：内政スキップ指定なら、自動勝利マスを先回り処理して配置 or 次ラウンドへ
-            if (_demo.ShouldSkipInteriorPhase(round))
-            {
-                ApplyDemoAutoResolves(round);
-                if (HasAnyBattleNode())
-                {
-                    // 手動戦闘マスが残っている → 配置画面（プレイヤー操作待ち）
-                    CurrentPhase = VSPrototypePhase.Run;
-                }
-                else
-                {
-                    // 戦闘マスゼロ → 即次ラウンドへ
-                    ProceedToNextRoundDirectly();
-                }
-                return;
-            }
-
             InteriorState.ResetForNewRound();
             PerformAutoConscript();
             CurrentPhase = VSPrototypePhase.InteriorAction;
         }
 
-        // 試遊モード専用：シナリオで自動勝利指定されたマスを先回りで結果反映する。
-        // 攻め込み戦は Capture／取り戻し戦は RevertFallen／防衛戦は何もしない（健在維持）。
-        // バルドゥイン拠点を自動制圧した場合は MarkBridgetRescued も合わせて立てる。
-        private void ApplyDemoAutoResolves(int round)
-        {
-            if (_mapState == null) return;
-            foreach (var node in _mapState.AllNodes())
-            {
-                if (node.BattleMode == MapNodeBattleMode.None) continue;
-                if (!_demo.ShouldAutoResolveBattle(round, node.Col, node.Layer)) continue;
-
-                switch (node.Kind)
-                {
-                    case MapNodeKind.EnemyTerritory:
-                    case MapNodeKind.EnemyStronghold:
-                        node.Capture();
-                        if (node.IsBalduinStronghold) _mapState.MarkBridgetRescued();
-                        break;
-                    case MapNodeKind.Friendly:
-                        if (node.IsFallen) node.RevertFallen();
-                        break;
-                    case MapNodeKind.Home:
-                        // 試遊モードの本拠地戦自動勝利は想定外（R7 は手動前提）
-                        break;
-                }
-
-                node.SetBattleMode(MapNodeBattleMode.None);
-                node.ClearEnemyComposition();
-                node.ClearAllies();
-            }
-        }
-
-        private bool HasAnyBattleNode()
-        {
-            if (_mapState == null) return false;
-            foreach (var node in _mapState.AllNodes())
-            {
-                if (node.BattleMode != MapNodeBattleMode.None) return true;
-            }
-            return false;
-        }
-
-        // 試遊モードで戦闘ゼロのラウンドを跨ぐとき、次ラウンドの内政フェーズへ直接進める。
-        // R6 完了時は次は R7 ボス戦＝同じく BeginRoundInteriorPhase で対応可能。
-        private void ProceedToNextRoundDirectly()
-        {
-            if (CurrentRound >= VSPrototypeRoundManager.MaxRounds) return;
-            BeginRoundInteriorPhase(CurrentRound + 1);
-        }
-
         /// <summary>
-        /// 指定シナリオで試遊モードを開始する。タイトル画面の試遊モードボタン（VSPrototypeTitleGUI）から呼ばれる。
-        /// _demo を NullDemoFlowController から DemoFlowController に差し替え、セーブを連動ロードしてラン開始。
-        /// 試遊モード中は通常版とフロー分岐される（内政スキップ・自動勝利・メタ進行非保存等）。
+        /// 指定セーブで試遊モードを開始する。タイトル画面の試遊ボタン（VSPrototypeTitleGUI）から呼ばれる。
+        /// _demo を NullDemoFlowController から DemoFlowController に差し替え、セーブをロードしてラン開始。
+        /// 試遊モード中はメタ進行を保存せず、救出ピーク（B-d）・ラン終了でタイトル戻りに分岐する。
         /// </summary>
-        public void StartDemoMode(string scenarioId)
+        public void StartDemoMode(string saveId)
         {
             var demoController = new DemoFlowController();
-            demoController.LoadScenario(scenarioId);
+            demoController.LoadSave(saveId);
             _demo = demoController;
             StartNewRunFromDemoSave(_demo.CurrentSave);
         }

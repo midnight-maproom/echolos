@@ -6,11 +6,7 @@ namespace Echolos.UseCase.Demo
     {
         public bool IsActive => false;
         public DemoSaveDefinition CurrentSave => null;
-        public DemoScenarioDefinition CurrentScenario => null;
 
-        public void LoadScenario(string scenarioId) { /* no-op */ }
-        public bool ShouldSkipInteriorPhase(int round) => false;
-        public bool ShouldAutoResolveBattle(int round, int col, int layer) => false;
-        public string GetObjectiveText(int round) => null;
+        public void LoadSave(string saveId) { /* no-op */ }
     }
 }

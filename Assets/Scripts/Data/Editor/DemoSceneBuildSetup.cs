@@ -6,7 +6,7 @@
 // シーンファイル：
 // - 通常版：EcholosProto_VS.unity（既存）
 // - 試遊版：EcholosProto_Demo.unity（要：EcholosProto_VS.unity を複製＋ VSPrototypeTitleGUI の
-//   _showDemoModeButtons=true ＋ VSPrototypeDemoObjectiveGUI コンポーネントを Bootstrap GameObject に追加）
+//   _showDemoModeButtons=true に設定）
 using UnityEditor;
 using UnityEngine;
 
@@ -40,8 +40,7 @@ namespace Echolos.Data.Editor
                 Debug.LogWarning(
                     $"試遊版シーンが存在しません: {DemoScenePath}\n" +
                     "手順: EcholosProto_VS.unity を複製して EcholosProto_Demo.unity にリネーム → " +
-                    "VSPrototypeTitleGUI の _showDemoModeButtons を true に → " +
-                    "Bootstrap GameObject に VSPrototypeDemoObjectiveGUI を AddComponent。");
+                    "VSPrototypeTitleGUI の _showDemoModeButtons を true に設定。");
                 return;
             }
             EditorBuildSettings.scenes = new[]
