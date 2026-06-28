@@ -288,25 +288,26 @@ namespace Echolos.Presentation.VSPrototype
             bool noUpgrades = unit.AvailableUpgrades == null || unit.AvailableUpgrades.Count == 0;
             bool disabled = atCap || noUpgrades;
 
-            var rowRect = GUILayoutUtility.GetRect(0, 56, GUILayout.ExpandWidth(true));
+            var rowRect = GUILayoutUtility.GetRect(0, 70, GUILayout.ExpandWidth(true));
             FillRect(rowRect, ColorRowBg);
 
             float padX = 12f;
-            var iconRect = new Rect(rowRect.x + padX, rowRect.y + 8, 40, 40);
+            var iconRect = new Rect(rowRect.x + padX, rowRect.y + 15, 40, 40);
             IconRegistry.TryDrawIcon(iconRect, unit.Id);
 
-            var nameRect = new Rect(iconRect.xMax + 12, rowRect.y + 8, 360, 20);
+            // ユニット名は wordWrap 可能な高さを確保（長名 + ロールタグで枠超え対策）
+            var nameRect = new Rect(iconRect.xMax + 12, rowRect.y + 8, 360, 36);
             string roleTag = UnitDisplayLabels.RoleTagsLabel(unit.CombatRoles);
             GUI.Label(nameRect, $"{unit.Name}  {roleTag}", _cardNameStyle);
 
-            var statRect = new Rect(iconRect.xMax + 12, rowRect.y + 30, 320, 20);
+            var statRect = new Rect(iconRect.xMax + 12, rowRect.y + 44, 320, 20);
             GUI.Label(statRect, $"HP {unit.EffectiveMaxHP}  ATK {unit.EffectiveATK}  DEF {unit.EffectiveDEF}",
                 _cardStatStyle);
 
-            var lvRect = new Rect(rowRect.xMax - 320, rowRect.y + 16, 160, 24);
+            var lvRect = new Rect(rowRect.xMax - 320, rowRect.y + 23, 160, 24);
             GUI.Label(lvRect, $"Lv {unit.Level}/{VSPrototypeInteriorState.MaxUnitLevel}", _bodyStyle);
 
-            var btnRect = new Rect(rowRect.xMax - 140, rowRect.y + 10, 120, 36);
+            var btnRect = new Rect(rowRect.xMax - 140, rowRect.y + 17, 120, 36);
             string label = atCap ? "Lv MAX" : (noUpgrades ? "選択肢なし" : "強化選択 →");
             GUI.enabled = !disabled;
             if (GUI.Button(btnRect, label))

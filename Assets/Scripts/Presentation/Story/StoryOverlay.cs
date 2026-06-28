@@ -73,8 +73,10 @@ namespace Echolos.Presentation.Story
 
         /// <summary>
         /// Rect 下部 1/4 にナレーション文字列を描画する。背景にも薄い半透明帯を敷いて可読性を確保。
+        /// reservedRightWidth を指定すると、テキスト描画範囲の右端からその幅だけ詰めて
+        /// 「次へ」ボタン等が重ならないよう余白を確保する。
         /// </summary>
-        public static void DrawNarration(Rect area, StoryProgress progress, GUIStyle style)
+        public static void DrawNarration(Rect area, StoryProgress progress, GUIStyle style, float reservedRightWidth = 0f)
         {
             if (progress == null || progress.IsFinished) return;
             var page = progress.CurrentPage;
@@ -97,7 +99,7 @@ namespace Echolos.Presentation.Story
             GUI.color = new Color(1f, 1f, 1f, alpha);
             const float padding = 40f;
             var textRect = new Rect(band.x + padding, band.y + padding * 0.4f,
-                                    band.width - padding * 2f, band.height - padding * 0.8f);
+                                    band.width - padding * 2f - reservedRightWidth, band.height - padding * 0.8f);
             GUI.Label(textRect, page.NarrationText, style);
             GUI.color = prev;
         }

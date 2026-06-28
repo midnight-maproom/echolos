@@ -126,6 +126,7 @@ namespace Echolos.Presentation.VSPrototype
 
         private GUIStyle _titleStyle;
         private GUIStyle _bodyStyle;
+        private GUIStyle _statusListNameStyle;
         private GUIStyle _logLineStyle;
         private GUIStyle _mutedStyle;
         private GUIStyle _hpTextStyle;
@@ -705,7 +706,7 @@ namespace Echolos.Presentation.VSPrototype
 
                 GUI.Label(new Rect(area.x + 12, rowY, area.width - 24, 16),
                     $"{prefix}{u.BaseUnit.Name}  HP {hp}/{u.MaxHP}",
-                    _bodyStyle);
+                    _statusListNameStyle);
 
                 var miniBar = new Rect(area.x + 12, rowY + 16, area.width - 24, 6);
                 DrawHPBar(miniBar, hp, u.MaxHP, alive, displayHp, drawText: false);
@@ -1352,6 +1353,12 @@ namespace Echolos.Presentation.VSPrototype
             _bodyStyle = new GUIStyle(GUI.skin.label) {
                 fontSize = 15, normal = { textColor = ColorText },
                 alignment = TextAnchor.MiddleLeft, wordWrap = true,
+            };
+            // 戦闘ステータスリストのユニット名行専用：fontSize 小さめ＋ wordWrap 無効＋クリップで枠超え抑止。
+            _statusListNameStyle = new GUIStyle(GUI.skin.label) {
+                fontSize = 12, normal = { textColor = ColorText },
+                alignment = TextAnchor.MiddleLeft, wordWrap = false,
+                clipping = TextClipping.Clip,
             };
             // 1 行ログ専用：wordWrap=false で折り返さず、Rect 外ははみ出さない（自動クリップ）。
             _logLineStyle = new GUIStyle(GUI.skin.label) {

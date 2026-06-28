@@ -28,6 +28,9 @@ namespace Echolos.Presentation.VSPrototype
         private const string ButtonNext = "次へ →";
         private const string ButtonSkip = "Skip";
 
+        // 「次へ」ボタン領域（幅 220 + 右マージン 56）＋緩衝 16 = ナレ帯右に確保する余白幅。
+        private const float AdvanceButtonReservedWidth = 292f;
+
         private VSPrototypeBootstrap _bootstrap;
         private GUIStyle _narrationStyle;
         private GUIStyle _buttonStyle;
@@ -65,8 +68,9 @@ namespace Echolos.Presentation.VSPrototype
             // 1) 暗幕＋スチル
             StoryOverlay.DrawBackground(area, progress);
 
-            // 2) ナレ帯
-            StoryOverlay.DrawNarration(area, progress, _narrationStyle);
+            // 2) ナレ帯（「次へ」ボタン表示中はボタン領域分の右余白を確保して重なりを回避）
+            float narrationReservedRight = progress.IsWaitingForManualAdvance ? AdvanceButtonReservedWidth : 0f;
+            StoryOverlay.DrawNarration(area, progress, _narrationStyle, narrationReservedRight);
 
             // 3) 進行ボタン（手動送り＝Display 中で DisplaySeconds==0 の時）
             DrawAdvanceButton(area, progress);

@@ -1073,10 +1073,12 @@ namespace Echolos.Presentation.VSPrototype
 
             const float w = 320f;
             const float lineH = 22f;
-            // 高さ：見出し + メタ行 + ステ行 + 区切り + 説明行（行数概算 desc 長 / 28 文字、最小 1 行）
-            int descLines = string.IsNullOrEmpty(desc) ? 0 : Mathf.Max(1, Mathf.CeilToInt(desc.Length / 28f));
+            // 説明行の高さは GUIStyle.CalcHeight で実測（wordWrap・フォント幅を加味した正確値）。
+            float descH = string.IsNullOrEmpty(desc)
+                ? 0f
+                : _flashStyle.CalcHeight(new GUIContent(desc), w - 20);
             float h = 12f + lineH /*name*/ + lineH /*meta*/ + lineH /*stats*/
-                    + (descLines > 0 ? 8f + lineH * descLines : 0f) + 10f;
+                    + (descH > 0 ? 8f + descH : 0f) + 10f;
 
             var mouse = Event.current.mousePosition;
             var rect = new Rect(mouse.x + 16f, mouse.y + 16f, w, h);
@@ -1106,10 +1108,10 @@ namespace Echolos.Presentation.VSPrototype
                 _bodyStyle);
             yOff += lineH;
 
-            if (descLines > 0)
+            if (descH > 0)
             {
                 yOff += 8f;
-                GUI.Label(new Rect(rect.x + 10, yOff, rect.width - 20, lineH * descLines),
+                GUI.Label(new Rect(rect.x + 10, yOff, rect.width - 20, descH),
                     desc, _flashStyle);
             }
         }
