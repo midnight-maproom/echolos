@@ -28,7 +28,7 @@
 
 ## 企画書
 
-（公開URLを貼る）
+[echolos_pitch.pdf](https://drive.google.com/file/d/1dscbopKUAIxZhwZmcqN81oEp5TYh_gEv/view?usp=sharing)
 
 ## 仕様書
 
