@@ -458,7 +458,7 @@ namespace Echolos.Presentation.VSPrototype
             _hadFirstReachedBossAtRunStart = false;
 
             // マップ状態構築（救出戦体験のため救出済フラグは常に false で初期化＝左列バルドゥイン拠点として描画）
-            _mapState = new VSPrototypeMapState(hasRescuedBalduin: false);
+            _mapState = new VSPrototypeMapState(balduinAlreadyRescued: false);
             foreach (var entry in save.NodeStates)
             {
                 var node = _mapState.GetNode(entry.Col, entry.Layer);
