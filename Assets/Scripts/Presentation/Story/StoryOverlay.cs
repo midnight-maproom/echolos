@@ -22,6 +22,9 @@ namespace Echolos.Presentation.Story
     /// <summary>ストーリーオーバーレイ用の描画ヘルパー（状態を持たない静的クラス）。</summary>
     public static class StoryOverlay
     {
+        /// <summary>ナレ帯の高さが画面に占める比率（呼び出し側が「次へ」ボタンをナレ帯外に置く座標計算で参照）。</summary>
+        public const float NarrationBandHeightRatio = 0.28f;
+
         // Resources.Load の結果をキャッシュ。null も入れて未配置パスの再試行を抑止する。
         private static readonly Dictionary<string, Texture2D> _textureCache = new Dictionary<string, Texture2D>();
 
@@ -73,22 +76,19 @@ namespace Echolos.Presentation.Story
 
         /// <summary>
         /// Rect 下部 1/4 にナレーション文字列を描画する。背景にも薄い半透明帯を敷いて可読性を確保。
-        /// reservedRightWidth を指定すると、テキスト描画範囲の右端からその幅だけ詰めて
-        /// 「次へ」ボタン等が重ならないよう余白を確保する。
         /// </summary>
-        public static void DrawNarration(Rect area, StoryProgress progress, GUIStyle style, float reservedRightWidth = 0f)
+        public static void DrawNarration(Rect area, StoryProgress progress, GUIStyle style)
         {
             if (progress == null || progress.IsFinished) return;
             var page = progress.CurrentPage;
             if (page == null || string.IsNullOrEmpty(page.NarrationText)) return;
 
             float alpha = progress.CurrentAlpha;
-            const float bandHeightRatio = 0.28f;
             var band = new Rect(
                 area.x,
-                area.yMax - area.height * bandHeightRatio,
+                area.yMax - area.height * NarrationBandHeightRatio,
                 area.width,
-                area.height * bandHeightRatio);
+                area.height * NarrationBandHeightRatio);
 
             // ナレ背景の半透明帯
             var prev = GUI.color;
@@ -99,7 +99,7 @@ namespace Echolos.Presentation.Story
             GUI.color = new Color(1f, 1f, 1f, alpha);
             const float padding = 40f;
             var textRect = new Rect(band.x + padding, band.y + padding * 0.4f,
-                                    band.width - padding * 2f - reservedRightWidth, band.height - padding * 0.8f);
+                                    band.width - padding * 2f, band.height - padding * 0.8f);
             GUI.Label(textRect, page.NarrationText, style);
             GUI.color = prev;
         }

@@ -28,9 +28,6 @@ namespace Echolos.Presentation.VSPrototype
         private const string ButtonNext = "次へ →";
         private const string ButtonSkip = "Skip";
 
-        // 「次へ」ボタン領域（幅 220 + 右マージン 56）＋緩衝 16 = ナレ帯右に確保する余白幅。
-        private const float AdvanceButtonReservedWidth = 292f;
-
         private VSPrototypeBootstrap _bootstrap;
         private GUIStyle _narrationStyle;
         private GUIStyle _buttonStyle;
@@ -68,9 +65,8 @@ namespace Echolos.Presentation.VSPrototype
             // 1) 暗幕＋スチル
             StoryOverlay.DrawBackground(area, progress);
 
-            // 2) ナレ帯（「次へ」ボタン表示中はボタン領域分の右余白を確保して重なりを回避）
-            float narrationReservedRight = progress.IsWaitingForManualAdvance ? AdvanceButtonReservedWidth : 0f;
-            StoryOverlay.DrawNarration(area, progress, _narrationStyle, narrationReservedRight);
+            // 2) ナレ帯
+            StoryOverlay.DrawNarration(area, progress, _narrationStyle);
 
             // 3) 進行ボタン（手動送り＝Display 中で DisplaySeconds==0 の時）
             DrawAdvanceButton(area, progress);
@@ -82,10 +78,11 @@ namespace Echolos.Presentation.VSPrototype
         private void DrawAdvanceButton(Rect area, StoryProgress progress)
         {
             if (!progress.IsWaitingForManualAdvance) return;
-            // ナレ帯の右端から少し内側に配置
+            // ナレ帯の外側（上端のすぐ上）に配置してナレ文字との重なりを避ける。
             float w = 220f, h = 56f;
-            float marginR = 56f, marginB = 56f;
-            var rect = new Rect(area.xMax - w - marginR, area.yMax - h - marginB, w, h);
+            float marginR = 24f, marginAboveBand = 12f;
+            float bandTop = area.yMax - area.height * StoryOverlay.NarrationBandHeightRatio;
+            var rect = new Rect(area.xMax - w - marginR, bandTop - h - marginAboveBand, w, h);
             if (GUI.Button(rect, ButtonNext, _buttonStyle))
                 progress.NextPage();
         }
